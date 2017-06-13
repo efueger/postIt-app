@@ -20,7 +20,7 @@ body {
 
 }
   
-#signup-btn {
+#signup-btn, #login-btn {
 	height: 30px;
 	margin-bottom: 5px;
 	width: 200px;
