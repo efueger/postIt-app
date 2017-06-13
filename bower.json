@@ -1,0 +1,17 @@
+{
+  "name": "postit-app",
+  "description": "An application to enable users post messages to groups",
+  "main": "server.js",
+  "authors": [
+    "Richard Terungwa Kombol"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rkterungwa16/postIt-app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
