@@ -41,41 +41,6 @@ body {
 	padding-left: 5px      
 }
 
-#nav-bar {
-  overflow: hidden;
-  background-color: #09c;
-}
-
-.top-nav {
-  display: block;
-  color: white;
-  margin: 0;
-}
-
-ul.top-nav li {
-  float: left;
-  display: inline-block;
-  padding: 10px 16px 10px;
-}
-
-.active {
-  display: block;
-  color: white;
-  text-decoration: none;
-}
-
-ul.top-nav li.right {
-	float: right;
-}
-
-.right:hover {
-  background-color: red;
-}
-
-.left:hover {
-  background-color: red;
-}
-
 /* Set black background color, white text and some padding */
 footer {
   background-color: #555;
