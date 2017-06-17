@@ -1,5 +1,5 @@
 
-module.exports = (sequelize, DataTypes) => {
+const users = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -10,9 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         User.hasMany(models.Message, {
           foreignKey: 'userId',
           as: 'messages',
-        })
+        });
       }
     }
   });
   return User;
 };
+
+export default users;
