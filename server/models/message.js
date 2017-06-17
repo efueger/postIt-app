@@ -1,5 +1,5 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
+
+const messages = (sequelize, DataTypes) => {
   const Message = sequelize.define('Message', {
     content: DataTypes.STRING,
     time: DataTypes.DATE
@@ -9,9 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         Message.belongsTo(models.Todo, {
           foreignKey: 'user',
           onDelete: 'CASCADE',
-        })
+        });
       }
     }
   });
   return Message;
 };
+
+export default messages;
