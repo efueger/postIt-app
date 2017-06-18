@@ -2,6 +2,11 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import babel from 'gulp-babel';
 import nodemon from 'gulp-nodemon';
+import cache from 'gulp-file-cache';
+import dotenv from 'dotenv';
+
+// Configure environment variables
+dotenv.config({ path: './.env' });
 
 const config = {
   bootstrapDir: './bower_components/bootstrap-sass',
@@ -21,15 +26,21 @@ gulp.task('fonts', () => {
   .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
+// Transpile es6 code
+gulp.task('compile', () => {
+  const stream = gulp.src(['./server/*.js'])
+    .pipe(babel())
+    .pipe(gulp.dest('./server/dist'))
+  return stream;
+})
+
 // Run app server
 gulp.task('serve', () => 
-  gulp.src('./server/app.js')
-  .pipe(babel())
-  .pipe(nodemon({
-    script: 'app.js',
+  nodemon({
+    script: 'index.js',
     ext: 'js html', 
     env: { 'NODE_ENV': process.env.NODE_ENV }
-  }))
+  })
 );
 
 gulp.task('default', ['css', 'fonts']);
