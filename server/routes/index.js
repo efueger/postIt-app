@@ -7,5 +7,5 @@ module.exports = (app) => {
     message: 'Welcome to postit API',
   }));
 
-  app.post('/api/user/signup', todoControllers.create);
+  app.post('/api/user/signup', usersControllers.create);
 };
