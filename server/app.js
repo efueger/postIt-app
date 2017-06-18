@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import sequelize from 'sequelize';
 
 // Set up the express app
 const app = express();
