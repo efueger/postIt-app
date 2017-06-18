@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 // Set up the express app
 const app = express();
 
-// Configure dotenv
+// Configure environment variables
 dotenv.config({ path: './.env' });
 
 // Log requests to the console
