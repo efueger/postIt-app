@@ -1,5 +1,7 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
+import babel from 'gulp-babel';
+import nodemon from 'gulp-nodemon';
 
 const config = {
   bootstrapDir: './bower_components/bootstrap-sass',
@@ -18,5 +20,16 @@ gulp.task('fonts', () => {
   return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
   .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
+
+// Run app server
+gulp.task('serve', () => 
+  gulp.src('./server/app.js')
+  .pipe(babel())
+  .pipe(nodemon({
+    script: 'app.js',
+    ext: 'js html', 
+    env: { 'NODE_ENV': process.env.NODE_ENV }
+  }))
+);
 
 gulp.task('default', ['css', 'fonts']);
