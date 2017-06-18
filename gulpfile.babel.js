@@ -26,14 +26,6 @@ gulp.task('fonts', () => {
   .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
-// Transpile es6 code
-gulp.task('compile', () => {
-  const stream = gulp.src(['./server/*.js'])
-    .pipe(babel())
-    .pipe(gulp.dest('./server/dist'))
-  return stream;
-})
-
 // Run app server
 gulp.task('serve', () => 
   nodemon({
