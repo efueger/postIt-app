@@ -4,6 +4,7 @@
   "description": "An application to enable users post messages to groups",
   "main": "server.js",
   "scripts": {
+    "start": "gulp serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
