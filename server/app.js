@@ -2,9 +2,13 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import sequelize from 'sequelize';
+import dotenv from 'dotenv';
 
 // Set up the express app
 const app = express();
+
+// Configure dotenv
+dotenv.config({ path: './.env' });
 
 // Log requests to the console
 app.use(logger('dev'));
@@ -19,7 +23,7 @@ app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the begining of nothingness.',
 }));
 
-const port = 3000;
+const port = process.env.PORT_DEV;
 
 app.listen(port);
 console.log('Listen to app at port...', port);
