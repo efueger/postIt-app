@@ -1,4 +1,4 @@
-from usersController import '../controllers';
+import usersController from '../controllers';
 
 const usersControllers = usersController;
 
