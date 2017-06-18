@@ -4,16 +4,18 @@ import path from 'path';
 import Sequelize from 'sequelize';
 const basename = path.basename(module.filename);
 const env = process.env.NODE_ENV || 'development';
-import config from __dirname + '/../config/config.json'
-config[env];
+//import config from '../config/config.json';
+const config = require('../config/config.json')[env];
+//config[env];
 let db = {}
 
 
-if (config.use_env_variable) {
-  let sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  let sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// if (config.use_env_variable) {
+//   const sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+//   const sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 fs
   .readdirSync(__dirname)
