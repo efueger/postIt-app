@@ -1,4 +1,4 @@
-from user import '../models';
+import user from '../models';
 const User = user.Todo;
 
 module.exports = {

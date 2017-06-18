@@ -1,3 +1,3 @@
-from users import './users';
+import users from './users';
 
 export default users;
