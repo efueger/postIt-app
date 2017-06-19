@@ -34,11 +34,13 @@
     "express-session": "^1.15.3",
     "gulp-babel": "^6.1.2",
     "gulp-file-cache": "0.0.1",
+    "gulp-jasmine-node": "^1.0.7",
     "gulp-nodemon": "^2.2.1",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
     "pg": "^6.2.4",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.1.0"
+    "sequelize": "^4.1.0",
+    "supertest": "^3.0.0"
   }
 }
