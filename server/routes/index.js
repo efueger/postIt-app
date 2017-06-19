@@ -1,3 +1,4 @@
+import passport from 'passport';
 import usersController from '../controllers';
 
 const usersControllers = usersController;
