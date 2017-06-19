@@ -15,7 +15,8 @@ const users = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    salt: DataTypes.STRING
   }, {
     classMethods: {
       associate: (models) => {
