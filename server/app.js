@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import sequelize from 'sequelize';
 import dotenv from 'dotenv';
 import session from 'express-session';
+import passport from 'passport';
 
 // Set up the express app
 const app = express();
@@ -25,6 +26,9 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// Configure passport for app
+app.use(passport.initialize());
+app.use(passport.session());
 // Import our routes into the application
 require('./routes')(app);
 app.get('*', (req, res) => res.status(200).send({
