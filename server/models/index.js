@@ -17,11 +17,20 @@ const dbOptions = {
   "port": process.env.DB_PORT,
   "dialect": process.env.DB_DIALECT
 }
-console.log('environment variable', process.env.DB_USERNAME);
+console.log('database name', process.env.DB_DATABASE);
 let db = {}
 
-const sequelize = new Sequelize(process.env.DB_DATABASE,
-  process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
+ const sequelize = new Sequelize(process.env.DB_DATABASE,
+   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
+//const sequelize = new Sequelize('postgres://ewafgpki:d-1N8gjzcalwq_db1ybHajguEBUxIEtV@stampy.db.elephantsql.com:5432/ewafgpki');
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 fs
   .readdirSync(__dirname)

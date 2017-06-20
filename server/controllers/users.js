@@ -10,14 +10,25 @@ export default class UserHelpers {
   createUser(req, res) {
     const User = user.User;
     const password = req.body.password;
+    const username = req.body.username;
+    const email = req.body.email;
+    const password2 = req.body.password2;
+
+    if (!username || !password || !password2 || !email) {
+      res.status(201).send("Please, fill in the fields");
+    }
+
+    if (password !== password2) {
+      res.status(201).send("Please, enter the same password twice.");
+    }
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
     return User
       .create({
-        username: req.body.username,
-        email: req.body.email,
+        username: username,
+        email: email,
         password: hashedPassword,
       })
       .then(user => res.status(201).send(user))
