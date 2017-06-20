@@ -17,7 +17,7 @@ export default class UserHelpers {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     console.log('Username value',User.create);
-    User.sync({force: true}).then(() => {
+    User.sync({force: false}).then(() => {
       return User
       .create({
         username: username,
