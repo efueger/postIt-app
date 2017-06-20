@@ -13,9 +13,15 @@ const users = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isEmail: true
-      }
+      },
+      unique: true,
+      allowNull: false
     },
-    password: DataTypes.STRING,
+    password: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
     salt: DataTypes.STRING
   }, {
     classMethods: {
