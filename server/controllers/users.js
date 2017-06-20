@@ -14,6 +14,10 @@ export default class UserHelpers {
     const email = req.body.email;
     const password2 = req.body.password2;
 
+    if (!username || !password || !password2 || !email) {
+      res.status(201).send('Input all fields');
+    }
+
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     console.log('Username value',User.create);
