@@ -1,4 +1,3 @@
-
 const messages = (sequelize, DataTypes) => {
   const Message = sequelize.define('Message', {
     content: DataTypes.STRING,
