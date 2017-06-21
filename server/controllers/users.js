@@ -16,11 +16,11 @@ export default class UserHelpers {
     const password2 = req.body.password2;
 
     if (!username || !password || !password2 || !email) {
-      res.send('Input all fields');
+      res.status(500).json({ status: 'Input all fields' });
     }
 
     if (password !== password2) {
-      res.send('Input matching passwords');
+      res.status.json({ status: 'Input matching passwords' });
     }
 
     const salt = bcrypt.genSaltSync(10);
@@ -37,5 +37,32 @@ export default class UserHelpers {
       .then(user => res.status(201).send(user))
       .catch(error => res.status(400).send(error));
     });    
+  }
+
+  /**
+  * Log in a registered user
+  * @param {object} req for first parameter
+  * @param {object} res for second parameter
+  */
+  loginUser(req, res) {
+    passport.authenticate('local', (err, user, info) => {
+      if (err) { 
+        res.status(500).json({ status: 'error' });
+      }
+
+      if (!user) {
+        res.status(404).json({ status: 'User not found' });
+      }
+
+      if (user) {
+        req.logiIn(user, (err) => {
+          if (err) {
+            res.status(500).json({ status: 'error' });
+          }
+
+          res.status(200).json({ status: 'success' });
+        })
+      }
+    });
   }
 }
