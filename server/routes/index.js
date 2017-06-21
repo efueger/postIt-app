@@ -9,6 +9,8 @@ const router = (app) => {
   }));
 
   app.post('/api/user/signup', usersControllers.createUser);
+
+  app.post('/api/user/login', usersControllers.loginUser);
 };
 
 export default router;
