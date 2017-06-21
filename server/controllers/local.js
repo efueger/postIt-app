@@ -2,7 +2,7 @@ import passport from 'passport';
 import localStrategy from 'passport-local';
 
 import passportInit from './passport';
-import users from '../models/';
+import user from '../models';
 import userAuthHelpers from './users';
 
 const LocalStrategy = localStrategy.Strategy;
@@ -28,3 +28,5 @@ passport.use(new LocalStrategy((username, password, done) =>{
     return done(null, false, { message: 'Incorrect credentials.' });
   });
 }));
+
+export default passport;
