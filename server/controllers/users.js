@@ -15,7 +15,11 @@ export default class UserHelpers {
     const password2 = req.body.password2;
 
     if (!username || !password || !password2 || !email) {
-      res.status(201).send('Input all fields');
+      res.send('Input all fields');
+    }
+
+    if (password !== password2) {
+      res.send('Input matching passwords');
     }
 
     const salt = bcrypt.genSaltSync(10);
