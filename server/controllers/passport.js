@@ -11,26 +11,6 @@ const passportConfig = (app) => {
   // Middleware to persist login sessions
   app.use(passport.session());
   // Configure strategy for application
-  passport.use(new LocalStrategy((username, password, done) =>{
-    user.User.findOne({
-      where: {
-        'username': username
-      }
-    }).then((user) => {
-      if (user == null) {
-        return done(null, false, { message: 'Incorrect credentials.' })
-      }
-
-      const hashedPassword = bcrypt.hashSync(password, user.salt);
-
-      If (user.password === hashedPassword) {
-        return done(null, user);
-      }
-
-      return done(null, false, { message: 'Incorrect credentials.' });
-    })
-  }));
-
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
