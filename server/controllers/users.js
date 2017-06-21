@@ -1,10 +1,11 @@
 import bcrypt from 'bcrypt';
 import user from '../models';
+import passport from './local';
 const User = user.User;
 
 export default class UserHelpers {
   /**
-  * Updates upvotes array in voteObj
+  * Create new user
   * @param {object} req for first parameter
   * @param {object} res for second parameter
   */
@@ -35,7 +36,6 @@ export default class UserHelpers {
       })
       .then(user => res.status(201).send(user))
       .catch(error => res.status(400).send(error));
-    });
-    
+    });    
   }
 }
