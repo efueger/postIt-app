@@ -5,11 +5,7 @@ import user from '../models';
 
 const LocalStrategy = localStrategy.Strategy;
 
-const passportConfig = (app) => {
-  // Middleware to initialize passport
-  app.use(passport.initialize());
-  // Middleware to persist login sessions
-  app.use(passport.session());
+const passportConfig = () => {
   // Configure strategy for application
   passport.serializeUser((user, done) => {
     done(null, user.id);
