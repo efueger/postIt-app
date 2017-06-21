@@ -49,3 +49,4 @@ const passportConfig = (app) => {
     })
   })
 }
+export default passportConfig;
