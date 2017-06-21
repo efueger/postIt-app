@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import session from 'express-session';
 import passport from 'passport';
 
+import routes from './routes';
+
 // Set up the express app
 const app = express();
 
@@ -30,7 +32,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 // Import our routes into the application
-require('./routes')(app);
+routes(app);
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the begining of nothingness.',
 }));

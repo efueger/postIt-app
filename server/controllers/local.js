@@ -21,7 +21,7 @@ passport.use(new LocalStrategy((username, password, done) =>{
 
     const hashedPassword = bcrypt.hashSync(password, user.salt);
 
-    If (user.password === hashedPassword) {
+    if (user.password === hashedPassword) {
       return done(null, user);
     }
 
