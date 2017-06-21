@@ -55,7 +55,7 @@ export default class UserHelpers {
       }
 
       if (user) {
-        req.logiIn(user, (err) => {
+        req.logIn(user, (err) => {
           if (err) {
             res.status(500).json({ status: 'error' });
           }
@@ -63,6 +63,6 @@ export default class UserHelpers {
           res.status(200).json({ status: 'success' });
         })
       }
-    });
+    })(req, res);
   }
 }
