@@ -14,9 +14,6 @@ export default {
       grouptype: {
         type: Sequelize.STRING
       },
-      active: {
-        type: Sequelize.NUMBER
-      },
       description: {
         type: Sequelize.STRING
       },
