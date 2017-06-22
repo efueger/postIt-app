@@ -3,7 +3,6 @@ const groups = (sequelize, DataTypes) => {
   const Group = sequelize.define('Group', {
     groupname: DataTypes.STRING,
     grouptype: DataTypes.STRING,
-    active: DataTypes.NUMBER,
     description: DataTypes.STRING
   }, {
     classMethods: {
