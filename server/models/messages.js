@@ -1,12 +1,14 @@
 const messages = (sequelize, DataTypes) => {
   const Message = sequelize.define('Message', {
-    content: DataTypes.STRING,
-    time: DataTypes.DATE
+    content: DataTypes.TEXT,
+    groupId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: (models) => {
-        Message.belongsTo(models.Todo, {
-          foreignKey: 'user',
+        Message.belongsTo(models.Group, {
+          foreignKey: 'groupId',
+          targetKey: 'messageId',
           onDelete: 'CASCADE',
         });
       }
