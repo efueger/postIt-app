@@ -9,7 +9,7 @@ export default class GroupHelpers {
   * @param {object} res for second parameter
   */
   getAllGroups(req, res) {
-    Group.findAl({})
+    Group.findAll({})
     .then((user) => res.status(200).json(user));
   }
 
@@ -19,12 +19,17 @@ export default class GroupHelpers {
   * @param {object} res for second parameter
   */
   createGroup(req, res) {
+    const groupname = req.body.groupname;
+    const description = req.body.description;
+    const grouptype = req.body.grouptype;
+    const userId = 2;
+
     Group.sync({force: false}).then(() => {
       return Group
       .create({
-        groupname: req.body.groupname,
-        description: req.body.description,
-        grouptype: req.body.grouptype
+        groupname: groupname,
+        description: description,
+        grouptype: grouptype
       })
       .then((group) => {
         UserGroup.sync({ force: false }).then(() => {
@@ -34,8 +39,9 @@ export default class GroupHelpers {
             groupId: group.id
           });
         });
+        res.status(200).send(group);
       });
     });
-    res.status(200).send(user);
+    
   }
 }

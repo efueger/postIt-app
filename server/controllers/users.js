@@ -11,8 +11,9 @@ export default class UserHelpers {
   */
   getAllRegisteredMembers(req, res) {
     User.findAll({})
-    .then((user) => res.status(500).json(user));
+    .then((user) => res.status(200).json(user));
   }
+  
   /**
   * Create new user
   * @param {object} req for first parameter
