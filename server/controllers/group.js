@@ -12,7 +12,7 @@ export default class GroupHelpers {
     Group.findAl({})
     .then((user) => res.status(200).json(user));
   }
-  
+
   /**
   * Create new group
   * @param {object} req for first parameter
@@ -26,8 +26,16 @@ export default class GroupHelpers {
         description: req.body.description,
         grouptype: req.body.grouptype
       })
-      .then((group) => res.status(201).send(group))
-      .catch((error) => res.status(400).send(error));
-    });    
+      .then((group) => {
+        UserGroup.sync({ force: false }).then(() => {
+          return UserGroup
+          .create({
+            userId: userId, 
+            groupId: group.id
+          });
+        });
+      });
+    });
+    res.status(200).send(user);
   }
 }
