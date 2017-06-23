@@ -5,6 +5,15 @@ const User = user.User;
 
 export default class UserHelpers {
   /**
+  * Get all registered members
+  * @param {object} req for first parameter
+  * @param {object} res for second parameter
+  */
+  getAllRegisteredMembers(req, res) {
+    User.findAll({})
+    .then((user) => res.status(500).json(user));
+  }
+  /**
   * Create new user
   * @param {object} req for first parameter
   * @param {object} res for second parameter
