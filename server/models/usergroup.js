@@ -4,8 +4,12 @@ const UserGroup = (sequelize, DataTypes) => {
     groupId: DataTypes.INTEGER
   }, {
     classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+      associate: (models) => {
+        Message.belongsTo(models.Group, {
+          foreignKey: 'groupId',
+          targetKey: 'messageId',
+          onDelete: 'CASCADE'
+        })
       }
     }
   });
