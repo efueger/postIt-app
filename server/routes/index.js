@@ -6,9 +6,7 @@ const usersControllers = new usersController.users();
 const groupControllers = new groupController.group();
 
 const router = (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to postit API',
-  }));
+  app.get('/api', usersControllers.getAllRegisteredMembers);
 
   app.post('/api/user/signup', usersControllers.createUser);
 
