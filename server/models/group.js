@@ -7,7 +7,13 @@ const groups = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        // associations can be defined here
+        Group.hasMany(models.Group, {
+          foreignKey: 'groupId', 
+          sourceKey: 'messageId', 
+          onDelete: 'CASCADE'
+        });
+
+        Group.belongsToMany(models.User, { through: 'UserProject' });
       }
     }
   });
