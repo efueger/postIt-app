@@ -9,11 +9,14 @@ export default {
         type: Sequelize.INTEGER
       },
       content: {
+        type: Sequelize.TEXT
+      },
+      groupId: {
         type: Sequelize.STRING
       },
-      time: {
-        type: Sequelize.DATE
-      },
+      userId: {
+        type: Sequelize.STRING
+      }
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
