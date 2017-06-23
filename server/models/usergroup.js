@@ -1,5 +1,5 @@
-const UserGroup = (sequelize, DataTypes) => {
-  const userGroup = sequelize.define('userGroup', {
+const userGroup = (sequelize, DataTypes) => {
+  const UserGroup = sequelize.define('userGroup', {
     userId: DataTypes.INTEGER,
     groupId: DataTypes.INTEGER
   }, {
@@ -13,5 +13,6 @@ const UserGroup = (sequelize, DataTypes) => {
       }
     }
   });
-  return userGroup;
+  return UserGroup;
 };
+export default userGroup;
