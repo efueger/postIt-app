@@ -37,7 +37,7 @@ describe('Group', () => {
     });
   });
 
-  it('Should retrieve a user email', () => {
+  it('Should retrieve groups by group name', () => {
     const groupname = 'Ether';
     group.findAll({
     where: {
@@ -49,7 +49,14 @@ describe('Group', () => {
      
   });
 
-  it('should retrieve by email', () => {
-    expect(user.email).toEqual('john@gmail.com');
-  })
-})
+  it('should retrieve groups by group type', () => {
+    const grouptype = 'relativity';
+    group.findAll({
+    where: {
+      'grouptype': grouptype
+    }
+  }).then((group) => {
+      expect(group).toEqual(etherGroup);
+    });
+  });
+});
