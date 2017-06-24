@@ -1,6 +1,5 @@
 import models from '../../models/';
 import users from '../fixtures/user.json';
-import Fixtures from 'sequelize-fixtures';
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 
@@ -33,48 +32,64 @@ describe('User', () => {
   afterEach(() => {
     return user.destroy({ truncate: true, cascade: true });
   });
-
+// "username": "johndoe",
+//     "password": "johns_password",
+//     "email": "johndoe@example.com"
   it('Should connect to the DB', () => {
     sequelize.authenticate()
     .then((err) => {
       expect(err).toBe(undefined);
     });
-
   });
 
-  it('Should load the passport plugin', () => {
-
-  });
-
-  it('Should retrieve by username', () => {
-
-  });
-
-  describe('username', () => {
-    it('should be required', () => {
-      //expect(user.username.unique).toEqual(true);
+  it('should test getting a user', () => {
+    user.findAll({})
+    .then((Users) => {
+      expect(Users).toEqual(users);
     });
+  });
 
-    it('should be alphanumberic and have 4-255 chars', () => {
-
+  it('Should retrieve a user email', () => {
+    const username = 'johndoe';
+    user.findOne({
+    where: {
+      'username': username
+    }
+  }).then((user) => {
+      expect(user.email).toEqual('johndoe@example.com');
     });
+     
+  });
+
+  it('should retrieve by email', () => {
+    expect(user.email).toEqual('john@gmail.com');
   })
 
-  describe('email', () => {
-    it('should be required', () => {
+  // describe('username', () => {
+  //   it('should be required', () => {
+  //     //expect(user.username.unique).toEqual(true);
+  //   });
 
-    });
+  //   it('should be alphanumberic and have 4-255 chars', () => {
 
-    it('should be a string', () => {
+  //   });
+  // })
 
-    });
+  // describe('email', () => {
+  //   it('should be required', () => {
 
-    it('should be unique', () => {
+  //   });
 
-    });
+  //   it('should be a string', () => {
 
-    it('should be valid email', () => {
+  //   });
 
-    });
-  });
+  //   it('should be unique', () => {
+
+  //   });
+
+  //   it('should be valid email', () => {
+
+  //   });
+  // });
 })
