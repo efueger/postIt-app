@@ -30,44 +30,22 @@ describe('User', () => {
   it('Should retrieve a user email', () => {
     const username = 'johndoe';
     user.findOne({
-    where: {
-      'username': username
-    }
-  }).then((user) => {
-      expect(user.email).toEqual('johndoe@example.com');
-    });
-     
+      where: {
+        'username': username
+      }
+    }).then((user) => {
+        expect(user.email).toEqual('johndoe@example.com');
+      });    
   });
 
   it('should retrieve by email', () => {
-    expect(user.email).toEqual('john@gmail.com');
-  })
-
-  // describe('username', () => {
-  //   it('should be required', () => {
-  //     //expect(user.username.unique).toEqual(true);
-  //   });
-
-  //   it('should be alphanumberic and have 4-255 chars', () => {
-
-  //   });
-  // })
-
-  // describe('email', () => {
-  //   it('should be required', () => {
-
-  //   });
-
-  //   it('should be a string', () => {
-
-  //   });
-
-  //   it('should be unique', () => {
-
-  //   });
-
-  //   it('should be valid email', () => {
-
-  //   });
-  // });
-})
+    const email = 'johndoe@example.com';
+    user.findOne({
+      where: {
+        'email': email
+      }
+    }).then((user) => {
+      expect(user.email).toEqual('johndoe@example.com');
+    });
+  });
+});
