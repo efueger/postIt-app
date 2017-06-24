@@ -3,6 +3,7 @@ import controller from '../controllers';
 
 const usersControllers = new controller.users();
 const groupControllers = new controller.group();
+const messageControllers = new controller.message();
 
 const router = (app) => {
   app.get('/api', usersControllers.getAllRegisteredMembers);
@@ -13,6 +14,8 @@ const router = (app) => {
   app.post('/api/user/login', usersControllers.loginUser);
 
   app.post('/api/group', groupControllers.createGroup);
+
+  app.post('/api/group/:groupid/message/:userid', messageControllers.sendMessage);
 };
 
 export default router;
