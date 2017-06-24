@@ -14,7 +14,7 @@ export default class MessageHelpers {
 
     const groupId = req.params.groupid;
     const messageContent = req.body.content;
-    const messageOwnerId = req.params.userid;
+    const messageOwnerId = 3
 
     Message.sync({force: false}).then(() => {
       return Message
@@ -23,8 +23,23 @@ export default class MessageHelpers {
         content: messageContent,
         userId: messageOwnerId
       })
-      .then(user => res.status(201).send(user))
+      .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error));
     });  
+  }
+  /**
+  * Get All group messages
+  * @param {object} req as first parameter
+  * @param {object} res as second parameter
+  */
+  getAllGroupMessages(req, res) {
+    const groupId = 4;
+    Message.findAll({
+      where: {
+        'groupId': groupId
+      }
+    }).then((message) => {
+      res.status(200).json(message);
+    });
   }
 }
