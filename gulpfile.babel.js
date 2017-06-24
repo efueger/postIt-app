@@ -2,8 +2,8 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import babel from 'gulp-babel';
 import nodemon from 'gulp-nodemon';
-import cache from 'gulp-file-cache';
 import dotenv from 'dotenv';
+import jasmineNode from 'gulp-jasmine-node';
 
 // Configure environment variables
 dotenv.config({ path: './.env' });
@@ -35,4 +35,9 @@ gulp.task('serve', () =>
   })
 );
 
+gulp.task('test', () => {
+  gulp.src('./server/test/unit/*Spec.js')
+    .pipe(babel())
+    .pipe(jasmineNode())
+});
 gulp.task('default', ['css', 'fonts']);
