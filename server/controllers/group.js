@@ -55,7 +55,6 @@ export default class GroupHelpers {
         });
         res.status(200).send(group);
       });
-    });
-    
+    });   
   }
 }
