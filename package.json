@@ -33,6 +33,7 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "gulp-babel": "^6.1.2",
+    "gulp-exit": "0.0.2",
     "gulp-file-cache": "0.0.1",
     "gulp-jasmine-node": "^1.0.7",
     "gulp-nodemon": "^2.2.1",

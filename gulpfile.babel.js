@@ -4,6 +4,7 @@ import babel from 'gulp-babel';
 import nodemon from 'gulp-nodemon';
 import dotenv from 'dotenv';
 import jasmineNode from 'gulp-jasmine-node';
+import exit from 'gulp-exit';
 
 // Configure environment variables
 dotenv.config({ path: './.env' });
@@ -39,6 +40,8 @@ gulp.task('test', () => {
   gulp.src('./server/test/unit/*Spec.js')
     .pipe(babel())
     .pipe(jasmineNode())
+    .on('end', cb)
+    .pipe(exit());
 });
 
 gulp.task('testRoute', () => {
