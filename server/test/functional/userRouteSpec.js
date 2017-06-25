@@ -53,7 +53,6 @@ describe('User-Routes', function(done) {
       .end((err, res) => {
         expect(res.body.username).toEqual('newuser');
         done();
-      })
-      
+      });
   });
 });
