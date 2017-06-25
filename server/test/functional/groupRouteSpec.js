@@ -1,14 +1,15 @@
 import req from 'supertest';
 import app from '../../app';
 import groups from '../fixtures/user.json';
-import sequelize from '../utils/db.js';
 import models from '../../models/';
 
 const group = models.Group;
 
-describe('Group-Routes', (done) => {
+describe('Group-Routes', () => {
   beforeEach(() => {
-    return  group.sync({force: false}).then(() => {group.bulkCreate(groups);});
+    return group.sync({ force: false }).then(() => {
+      group.bulkCreate(groups);
+    });
   });
 
   afterEach(() => {

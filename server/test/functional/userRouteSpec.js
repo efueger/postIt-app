@@ -1,14 +1,15 @@
 import req from 'supertest';
 import app from '../../app';
 import users from '../fixtures/user.json';
-import sequelize from '../utils/db.js';
 import models from '../../models/';
 
 const user = models.User;
 
-describe('User-Routes', (done) => {
+describe('User-Routes', () => {
   beforeEach(() => {
-    return  user.sync({force: false}).then(() => {user.bulkCreate(users);});
+    return user.sync({ force: false }).then(() => {
+      user.bulkCreate(users);
+    });
   });
 
   afterEach(() => {
