@@ -6,9 +6,9 @@ import models from '../../models/';
 
 const user = models.User;
 
-describe('User-Routes', function(done) {
+describe('User-Routes', (done) => {
   beforeEach(() => {
-    return user.bulkCreate(users);
+    return  user.sync({force: false}).then(() => {user.bulkCreate(users);});
   });
 
   afterEach(() => {
