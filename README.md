@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/rkterungwa16/postIt-app.svg?branch=feature/server-api)](https://travis-ci.org/rkterungwa16/postIt-app)
