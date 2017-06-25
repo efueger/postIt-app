@@ -12,17 +12,17 @@ dotenv.config({ path: '../.env' });
 const dbOptions = {
   "username": process.env.DB_USERNAME,
   "password": process.env.DB_PASS,
-  "database": process.env.DB_DATABASE,
+  "database": process.env.TEST_DATABASE,
   "host": process.env.DB_HOST,
   "port": process.env.DB_PORT,
   "dialect": process.env.DB_DIALECT
 }
-console.log('database name', process.env.DB_DATABASE);
+console.log('database name', process.env.TEST_DATABASE);
 let db = {}
 
- const sequelize = new Sequelize(process.env.DB_DATABASE,
-   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
-//const sequelize = new Sequelize('postgres://ewafgpki:d-1N8gjzcalwq_db1ybHajguEBUxIEtV@stampy.db.elephantsql.com:5432/ewafgpki');
+ // const sequelize = new Sequelize(process.env.TEST_DATABASE,
+ //   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
+const sequelize = new Sequelize(process.env.DB_URL);
 sequelize
   .authenticate()
   .then(() => {
