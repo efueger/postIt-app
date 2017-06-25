@@ -10,3 +10,15 @@ addons:
     - g++-4.8
 env:
   - TRAVIS=traviz CXX=g++-4.8
+  global:
+    - CC_TEST_REPORTER_ID=eced175fbf4feab32d69333b7af4e9bc0db85821d72c34022de697846a0fd7b1
+    - GIT_COMMITTED_AT=$(if ["TRAVIS_PULL_REQUEST" == "false"]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
+language: ruby
+rvm:
+  - 2.2.0
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+script:
+  - bundle exec rspec
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
