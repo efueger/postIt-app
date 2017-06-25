@@ -8,7 +8,7 @@ const group = models.Group;
 
 describe('Group-Routes', (done) => {
   beforeEach(() => {
-    return  group.sync({force: false}).then(() => {group.bulkCreate(groups);})
+    return  group.sync({force: false}).then(() => {group.bulkCreate(groups);});
   });
 
   afterEach(() => {
