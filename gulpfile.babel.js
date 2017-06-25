@@ -40,7 +40,6 @@ gulp.task('test', () => {
   gulp.src('./server/test/unit/*Spec.js')
     .pipe(babel())
     .pipe(jasmineNode())
-    .on('end', cb)
     .pipe(exit());
 });
 
@@ -48,5 +47,6 @@ gulp.task('testRoute', () => {
   gulp.src('./server/test/functional/*Spec.js')
   .pipe(babel())
   .pipe(jasmineNode())
+  .pipe(exit())
 })
 gulp.task('default', ['css', 'fonts']);
