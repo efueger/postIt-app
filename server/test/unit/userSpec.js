@@ -1,6 +1,6 @@
 import models from '../../models/';
 import users from '../fixtures/user.json';
-import sequelize from '../utils/db.js';
+import sequelize from '../utils/db';
 
 const user = models.User;
 
@@ -31,21 +31,21 @@ describe('User', () => {
     const username = 'johndoe';
     user.findOne({
       where: {
-        'username': username
+        username
       }
-    }).then((user) => {
-        expect(user.email).toEqual('johndoe@example.com');
-      });    
+    }).then((myUser) => {
+      expect(myUser.email).toEqual('johndoe@example.com');
+    });
   });
 
   it('should retrieve by email', () => {
     const email = 'johndoe@example.com';
     user.findOne({
       where: {
-        'email': email
+        email
       }
-    }).then((user) => {
-      expect(user.email).toEqual('johndoe@example.com');
+    }).then((myUser) => {
+      expect(myUser.email).toEqual('johndoe@example.com');
     });
   });
 });

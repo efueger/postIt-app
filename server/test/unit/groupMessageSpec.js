@@ -1,18 +1,8 @@
 import models from '../../models/';
 import groupMessages from '../fixtures/groupmessage.json';
-import sequelize from '../utils/db.js';
+import sequelize from '../utils/db';
 
 const GroupMessages = models.Message;
-const groupFourMessages = [
-  {
-    "id": 6,
-    "groupname": "Ether",
-    "grouptype": "relativity",
-    "description": "The previous understanding of the universe",
-    "createdAt": "2017-06-23T14:05:37.749Z",
-    "updatedAt": "2017-06-23T14:05:37.749Z"
-  }
-];
 
 describe('GroupMessages', () => {
   beforeEach(() => {
@@ -34,12 +24,11 @@ describe('GroupMessages', () => {
     const groupId = 4;
     GroupMessages.findAll({
       where: {
-        groupId: groupId
+        groupId
       }
     })
     .then((messages) => {
       expect(messages).toEqual(groupMessages);
     });
   });
-
 });
