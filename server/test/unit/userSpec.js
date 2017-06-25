@@ -35,7 +35,7 @@ describe('User', () => {
       }
     }).then((myUser) => {
       expect(myUser.email).toEqual('johndoe@example.com');
-    });
+    });   
   });
 
   it('should retrieve by email', () => {

@@ -1,5 +1,6 @@
 import models from '../../models/';
 import groups from '../fixtures/groups.json';
+
 import sequelize from '../utils/db';
 
 const group = models.Group;
