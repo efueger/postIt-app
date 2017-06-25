@@ -13,7 +13,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=eced175fbf4feab32d69333b7af4e9bc0db85821d72c34022de697846a0fd7b1
     - GIT_COMMITTED_AT=$(if ["TRAVIS_PULL_REQUEST" == "false"]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
-language: ruby
+language: javascript
 rvm:
   - 2.2.0
 before_script:
