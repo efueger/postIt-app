@@ -40,4 +40,10 @@ gulp.task('test', () => {
     .pipe(babel())
     .pipe(jasmineNode())
 });
+
+gulp.task('testRoute', () => {
+  gulp.src('./server/test/functional/*Spec.js')
+  .pipe(babel())
+  .pipe(jasmineNode())
+})
 gulp.task('default', ['css', 'fonts']);

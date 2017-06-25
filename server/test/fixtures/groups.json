@@ -1,50 +1,32 @@
 [
     {
-        "id": 1,
         "groupname": "codeone",
         "grouptype": "love",
-        "description": "Talk about love",
-        "createdAt": "2017-06-21T18:00:57.731Z",
-        "updatedAt": "2017-06-21T18:00:57.731Z"
+        "description": "Talk about love"
     },
     {
-        "id": 2,
         "groupname": "lucil",
         "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn.",
-        "createdAt": "2017-06-23T11:33:52.562Z",
-        "updatedAt": "2017-06-23T11:33:52.562Z"
+        "description": "Be as lucid as possible mehn."
     },
     {
-        "id": 3,
         "groupname": "lucil",
         "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn.",
-        "createdAt": "2017-06-23T11:47:09.811Z",
-        "updatedAt": "2017-06-23T11:47:09.811Z"
+        "description": "Be as lucid as possible mehn."
     },
     {
-        "id": 4,
         "groupname": "lucil",
         "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn.",
-        "createdAt": "2017-06-23T13:54:40.284Z",
-        "updatedAt": "2017-06-23T13:54:40.284Z"
+        "description": "Be as lucid as possible mehn."
     },
     {
-        "id": 5,
         "groupname": "lucil",
         "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn.",
-        "createdAt": "2017-06-23T13:57:43.172Z",
-        "updatedAt": "2017-06-23T13:57:43.172Z"
+        "description": "Be as lucid as possible mehn."
     },
     {
-        "id": 6,
         "groupname": "Ether",
         "grouptype": "relativity",
-        "description": "The previous understanding of the universe",
-        "createdAt": "2017-06-23T14:05:37.749Z",
-        "updatedAt": "2017-06-23T14:05:37.749Z"
+        "description": "The previous understanding of the universe"   
     }
 ]

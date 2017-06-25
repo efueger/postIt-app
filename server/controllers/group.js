@@ -1,5 +1,6 @@
 import model from '../models';
 const Group = model.Group;
+
 const UserGroup = model.UserGroups;
 
 export default class GroupHelpers {
@@ -14,6 +15,22 @@ export default class GroupHelpers {
   }
 
   /**
+
+  * Get a group from created groups
+  * @param {objec} req for first parameter
+  * @param {objec} req for second parameter
+  */
+  getOneGroup(req, res) {
+    const groupid = req.params.groupid;
+    Group.findOne({
+      where: {
+        id: groupid
+      }
+    }).then((user) => res.status(200).json(user));
+  }
+
+  /**
+
   * Create new group
   * @param {object} req for first parameter
   * @param {object} res for second parameter
@@ -41,7 +58,6 @@ export default class GroupHelpers {
         });
         res.status(200).send(group);
       });
-    });
-    
+    });   
   }
 }

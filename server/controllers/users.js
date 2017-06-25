@@ -13,6 +13,20 @@ export default class UserHelpers {
     User.findAll({})
     .then((user) => res.status(200).json(user));
   }
+
+  /**
+  * Get one registered user
+  * @param {object} req for first parameter
+  * @param {object} req for second parameter
+  */
+  getOneRegisteredUser(req, res) {
+    const userId = req.params.userid;
+    User.findOne({
+      where: {
+        'id': userId
+      }
+    }).then((user) => res.status(200).json(user));
+  };
   
   /**
   * Create new user
@@ -30,7 +44,7 @@ export default class UserHelpers {
     }
 
     if (password !== password2) {
-      res.status.json({ status: 'Input matching passwords' });
+      res.status(500).json({ status: 'Input matching passwords' });
     }
 
     const salt = bcrypt.genSaltSync(10);

@@ -1,16 +1,17 @@
 import models from '../../models/';
 import groups from '../fixtures/groups.json';
-import sequelize from '../utils/db.js';
+
+import sequelize from '../utils/db';
 
 const group = models.Group;
 const etherGroup = [
   {
-    "id": 6,
-    "groupname": "Ether",
-    "grouptype": "relativity",
-    "description": "The previous understanding of the universe",
-    "createdAt": "2017-06-23T14:05:37.749Z",
-    "updatedAt": "2017-06-23T14:05:37.749Z"
+    id: 6,
+    groupname: 'Ether',
+    grouptype: 'relativity',
+    description: 'The previous understanding of the universe',
+    createdAt: '2017-06-23T14:05:37.749Z',
+    updatedAt: '2017-06-23T14:05:37.749Z'
   }
 ];
 
@@ -40,23 +41,22 @@ describe('Group', () => {
   it('Should retrieve groups by group name', () => {
     const groupname = 'Ether';
     group.findAll({
-    where: {
-      'groupname': groupname
-    }
-  }).then((group) => {
-      expect(group).toEqual(etherGroup);
+      where: {
+        groupname
+      }
+    }).then((mygroup) => {
+      expect(mygroup).toEqual(etherGroup);
     });
-     
   });
 
   it('should retrieve groups by group type', () => {
     const grouptype = 'relativity';
     group.findAll({
-    where: {
-      'grouptype': grouptype
-    }
-  }).then((group) => {
-      expect(group).toEqual(etherGroup);
+      where: {
+        grouptype
+      }
+    }).then((mygroup) => {
+      expect(mygroup).toEqual(etherGroup);
     });
   });
 });

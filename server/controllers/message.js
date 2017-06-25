@@ -33,7 +33,7 @@ export default class MessageHelpers {
   * @param {object} res as second parameter
   */
   getAllGroupMessages(req, res) {
-    const groupId = 4;
+    const groupId = req.params.groupid;
     Message.findAll({
       where: {
         'groupId': groupId
