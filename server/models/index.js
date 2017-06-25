@@ -20,9 +20,9 @@ const dbOptions = {
 console.log('database name', process.env.TEST_DATABASE);
 let db = {}
 
- // const sequelize = new Sequelize(process.env.TEST_DATABASE,
- //   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
-const sequelize = new Sequelize(process.env.DB_URL);
+const sequelize = new Sequelize(process.env.TEST_DATABASE,
+  process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
+//const sequelize = new Sequelize(process.env.DB_URL);
 sequelize
   .authenticate()
   .then(() => {
