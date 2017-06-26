@@ -5,6 +5,8 @@ import nodemon from 'gulp-nodemon';
 import dotenv from 'dotenv';
 import jasmineNode from 'gulp-jasmine-node';
 import exit from 'gulp-exit';
+import istanbul from 'gulp-babel-istanbul';
+import injectModules from 'gulp-inject-modules';
 
 // Configure environment variables
 dotenv.config({ path: './.env' });
