@@ -9,38 +9,37 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="public/css/app.css">
+  <link rel="stylesheet" href="public/css/materialize.css">
 </head>
 <body>
   
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header" id="nav-bar">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                               
-        </button>
-        <a class="navbar-brand" href="#">PostIt</a>
-      </div>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container" id="nav-bar">
+      <a id="logo-container" href="#" class="brand-logo">PostIt</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">My Profile</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
-  <div class="container-fluid">
-    <div class="col-md-4 col-md-offset-4 well">
-      <div class="col-md-8 col-md-offset-2">
+  <br><br>
 
-        <form class="form-horizontal" method="post" action="#">
-          <div class="form-group text-center">
-            <input class="form-control" id="login-email" placeholder="Your email" type="email"/>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="row center col s12 m6 l3">
+      
+      <div class="col s4 offset-s4">
+        <form  method="post" action="#">
+          <div class="input-field">
+            <input class="validate" id="login-username" placeholder="Your username" type="text"/>
           </div>
 
-          <div class="form-group text-center">
-            <input class="form-control" id="login-password" placeholder="Your password" type="password"/>
+          <div class="input-field">
+            <input class="validate" id="login-password" placeholder="Your password" type="password"/>
           </div>
         
           <div class="form-group text-center">
-            <button class="btn btn-primary" type="button" id="login-btn">Login</button>
+            <a class="waves-effect waves-light btn-large" id="signup-btn">Register</a>
           </div>
 
           <div class="form-group text-center">
