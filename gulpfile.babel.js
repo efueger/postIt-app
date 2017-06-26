@@ -39,10 +39,18 @@ gulp.task('serve', () =>
 );
 
 gulp.task('test', () => {
-  gulp.src('./server/test/unit/*Spec.js')
+  gulp.src(['./server/models/*js', './server/controllers/*js', './server/routes/*js', './server/models/*js'])
+  .pipe(istanbul())
+  .pipe(istanbul.hookRequire())
+  .on('finish', () => {
+    gulp.src('./server/test/unit/*Spec.js')
     .pipe(babel())
+    .pipe(injectModules())
     .pipe(jasmineNode())
+    .pipe(istanbul.writeReports())
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: 70 } }))
     .pipe(exit());
+  })
 });
 
 gulp.task('testRoute', () => {
