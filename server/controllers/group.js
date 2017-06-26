@@ -49,13 +49,13 @@ export default class GroupHelpers {
         grouptype: grouptype
       })
       .then((group) => {
-        UserGroup.sync({ force: false }).then(() => {
-          return UserGroup
-          .create({
-            userId: userId, 
-            groupId: group.id
-          });
-        });
+        // UserGroup.sync({ force: false }).then(() => {
+        //   return UserGroup
+        //   .create({
+        //     userId: userId, 
+        //     groupId: group.id
+        //   });
+        // });
         res.status(200).send(group);
       });
     });   

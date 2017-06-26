@@ -83,9 +83,8 @@ export default class UserHelpers {
           if (err) {
             res.status(500).json({ status: 'error' });
           }
-
           res.status(200).json({ status: 'success' });
-        })
+        });
       }
     })(req, res);
   }
