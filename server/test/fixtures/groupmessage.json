@@ -1,18 +1,12 @@
 [
   {
-      "id": 2,
       "content": "I entered the realm of invisibility",
       "groupId": 4,
-      "userId": 2,
-      "createdAt": "2017-06-24T17:20:32.711Z",
-      "updatedAt": "2017-06-24T17:20:32.711Z"
+      "userId": 2
   },
   {
-      "id": 3,
       "content": "I entered the realm of invisibility",
       "groupId": 4,
-      "userId": 3,
-      "createdAt": "2017-06-24T17:45:08.810Z",
-      "updatedAt": "2017-06-24T17:45:08.810Z"
+      "userId": 3
   }
 ]
