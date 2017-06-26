@@ -39,12 +39,13 @@ gulp.task('serve', () =>
   })
 );
 
+// Test coverage
 gulp.task('test', () => {
   gulp.src(['./server/models/*js', './server/controllers/*js', './server/routes/*js', './server/models/*js'])
   .pipe(istanbul())
   .pipe(istanbul.hookRequire())
   .on('finish', () => {
-    gulp.src('./server/test/unit/*Spec.js')
+    gulp.src(['./server/test/functional/*Spec.js', './server/test/unit/*Spec.js'])
     .pipe(babel())
     .pipe(injectModules())
     .pipe(jasmineNode())
@@ -54,10 +55,4 @@ gulp.task('test', () => {
   });
 });
 
-gulp.task('testRoute', () => {
-  gulp.src('./server/test/functional/*Spec.js')
-  .pipe(babel())
-  .pipe(jasmineNode())
-  .pipe(exit());
-});
 gulp.task('default', ['css', 'fonts']);
