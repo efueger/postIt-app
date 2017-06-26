@@ -10,6 +10,7 @@ import injectModules from 'gulp-inject-modules';
 
 // Configure environment variables
 dotenv.config({ path: './.env' });
+const NODE_ENV = process.env.NODE_ENV;
 
 const config = {
   bootstrapDir: './bower_components/bootstrap-sass',
@@ -19,22 +20,22 @@ const config = {
 gulp.task('css', () => {
   return gulp.src('./template/css/app.scss')
   .pipe(sass({
-    includePaths: [config.bootstrapDir + '/assets/stylesheets'],
+    includePaths: [`${config.bootstrapDir}/assets/stylesheets`],
   }))
-  .pipe(gulp.dest(config.publicDir + '/css'));
+  .pipe(gulp.dest(`${config.publicDir}/css`));
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
-  .pipe(gulp.dest(config.publicDir + '/fonts'));
+  return gulp.src(`${config.bootstrapDir}/assets/fonts/`)
+  .pipe(gulp.dest(`${config.publicDir}/fonts`));
 });
 
 // Run app server
-gulp.task('serve', () => 
+gulp.task('serve', () =>
   nodemon({
     script: 'index.js',
-    ext: 'js html', 
-    env: { 'NODE_ENV': process.env.NODE_ENV }
+    ext: 'js html',
+    env: { NODE_ENV }
   })
 );
 
@@ -50,13 +51,13 @@ gulp.task('test', () => {
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 70 } }))
     .pipe(exit());
-  })
+  });
 });
 
 gulp.task('testRoute', () => {
   gulp.src('./server/test/functional/*Spec.js')
   .pipe(babel())
   .pipe(jasmineNode())
-  .pipe(exit())
-})
+  .pipe(exit());
+});
 gulp.task('default', ['css', 'fonts']);
