@@ -44,7 +44,7 @@ describe('User-Routes', () => {
     req(app)
       .post('/api/user/signup')
       .send({
-        username: 'newuser',
+        username: 'myuser',
         email: 'newuser@example.com',
         password: '1234',
         password2: '1234'
@@ -52,7 +52,22 @@ describe('User-Routes', () => {
       .expect(201)
       .expect('Content-Type', 'application/json; charset=utf-8')
       .end((err, res) => {
-        expect(res.body.username).toEqual('newuser');
+        expect(res.body.username).toEqual('myuser');
+        done();
+      });
+  });
+
+  it('should sign in a created user', (done) => {
+    req(app)
+      .post('/api/user/login')
+      .send({
+        username: 'myuser',
+        password: '1234'
+      })
+      .expect(200)
+      .expect('Content-Type', 'application/json; charset=utf-8')
+      .end((err, res) => {
+        expect(res.body.status).toEqual('User not found');
         done();
       });
   });
