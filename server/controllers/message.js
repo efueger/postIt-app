@@ -11,7 +11,6 @@ export default class MessageHelpers {
   * @param {object} res for second parameter
   */
   sendMessage(req, res) {
-
     const groupId = req.params.groupid;
     const messageContent = req.body.content;
     const messageOwnerId = 3

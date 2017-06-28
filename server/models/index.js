@@ -41,7 +41,7 @@ fs
     var model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
-
+console.log('The database models', db.User);
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
