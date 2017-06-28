@@ -1,5 +1,11 @@
 **/node_modules
 /bower_components
 public
+<<<<<<< HEAD
 /coverage
 *.env
+=======
+npm-debug.log
+*.env
+/coverage
+>>>>>>> feature/server-api
