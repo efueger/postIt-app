@@ -16,6 +16,11 @@
     "url": "https://github.com/rkterungwa16/postIt-app/issues"
   },
   "homepage": "https://github.com/rkterungwa16/postIt-app#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-sass": "^3.1.0"
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

@@ -1,5 +1,7 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
+const config = {
+  bootstrapDir: './bower_components/materialize',
 import babel from 'gulp-babel';
 import nodemon from 'gulp-nodemon';
 import dotenv from 'dotenv';
@@ -11,25 +13,28 @@ import injectModules from 'gulp-inject-modules';
 // Configure environment variables
 dotenv.config({ path: './.env' });
 const NODE_ENV = process.env.NODE_ENV;
-
-const config = {
-  bootstrapDir: './bower_components/bootstrap-sass',
   publicDir: './template/public'
 };
 
 gulp.task('css', () => {
-  return gulp.src('./template/css/app.scss')
+  return gulp.src(config.bootstrapDir + '/sass/materialize.scss')
   .pipe(sass({
-    includePaths: [`${config.bootstrapDir}/assets/stylesheets`],
+    includePaths: [config.bootstrapDir + '/sass/_style.scss'],
   }))
-  .pipe(gulp.dest(`${config.publicDir}/css`));
+  .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(`${config.bootstrapDir}/assets/fonts/`)
-  .pipe(gulp.dest(`${config.publicDir}/fonts`));
+  return gulp.src(config.bootstrapDir + '/fonts/**/*')
+  .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
+gulp.task('js', () => {
+  return gulp.src(config.bootstrapDir + '/js/**/*')
+  .pipe(gulp.dest(config.publicDir + '/js'));
+})
+
+gulp.task('default', ['css', 'fonts', 'js']);
 // Run app server
 gulp.task('serve', () =>
   nodemon({
@@ -54,5 +59,3 @@ gulp.task('test', () => {
     .pipe(exit());
   });
 });
-
-gulp.task('default', ['css', 'fonts']);

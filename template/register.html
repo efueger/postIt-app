@@ -4,28 +4,58 @@
   <title>PostIt App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/materialize.css">
 </head>
 <body>
-  <div id="nav-bar">
-    <ul class="top-nav">
-      <li class="left">About</li>
-      <li class="right"><a href="#" class="active">Sign in<a></li>
-    </ul>
-  </div>
-  <div id="container">
-    <div id="input-container">
-      <input class="user-input" id="register-username" placeholder="Choose username" type="text"/>
-      <br>
-      <input class="user-input" id="register-email" placeholder="Your email" type="email"/>
-      <br>
-      <input class="user-input" id="register-password" placeholder="Your password" type="password"/>
-      <br>
-      <button id="signup-btn">Register</button>
-      <h5>Already a member? <a href='#'>Login</a></h5>
+  <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper" id="nav-bar"><a id="logo-container" href="#" class="brand-logo">PostIt</a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container col s12 m6 l3">
+      <br><br>
+      <div class="row center col s12 m6 l3">
+        <div class="card col s4 offset-s4 grey lighten-4">
+          <form class="form-horizontal" method="post" action="#">
+            <div class="input-field">
+              <i class="material-icons prefix">person_outline</i>
+              <input class="validate" id="reg-username" placeholder="Choose username" type="text" />
+            </div>
+
+            <div class="input-field">
+              <i class="material-icons prefix">email</i>
+              <input class="validate" id="reg-email" placeholder="Your email" type="email"/>
+            </div>
+        
+            <div class="input-field">
+              <i class="material-icons prefix">lock_outline</i>
+              <input class="validate" id="reg-password" placeholder="Your password" type="password"/>
+            </div> 
+
+            <div class="input-field">
+              <i class="material-icons prefix">lock_outline</i>
+              <input class="validate" id="confirm-password" placeholder="Confirm password" type="password"/>
+            </div>
+
+            <div class="form-group text-center">
+              <a class="waves-effect waves-light btn-large" id="signup-btn">Register</a>
+            </div>
+
+            <div class="form-group text-center">
+              <span>Already a member?<a href='#'>Login</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </body>
