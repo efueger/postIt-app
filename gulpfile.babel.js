@@ -20,22 +20,14 @@ const config = {
 gulp.task('css', () => {
   return gulp.src(config.bootstrapDir + '/sass/materialize.scss')
   .pipe(sass({
-<<<<<<< HEAD
     includePaths: [config.bootstrapDir + '/sass/_style.scss'],
-=======
-    includePaths: [`${config.bootstrapDir}/assets/stylesheets`],
->>>>>>> feature/server-api
   }))
   .pipe(gulp.dest(`${config.publicDir}/css`));
 });
 
 gulp.task('fonts', () => {
-<<<<<<< HEAD
   return gulp.src(config.bootstrapDir + '/fonts/**/*')
   .pipe(gulp.dest(config.publicDir + '/fonts'));
-=======
-  return gulp.src(`${config.bootstrapDir}/assets/fonts/`)
-  .pipe(gulp.dest(`${config.publicDir}/fonts`));
 });
 
 // Run app server
@@ -61,7 +53,6 @@ gulp.task('test', () => {
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 70 } }))
     .pipe(exit());
   });
->>>>>>> feature/server-api
 });
 
 gulp.task('js', () => {
