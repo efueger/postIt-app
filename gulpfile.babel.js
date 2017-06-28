@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
-const config = {
-  bootstrapDir: './bower_components/materialize',
 import babel from 'gulp-babel';
 import nodemon from 'gulp-nodemon';
 import dotenv from 'dotenv';
@@ -13,6 +11,8 @@ import injectModules from 'gulp-inject-modules';
 // Configure environment variables
 dotenv.config({ path: './.env' });
 const NODE_ENV = process.env.NODE_ENV;
+const config = {
+  bootstrapDir: './bower_components/materialize',
   publicDir: './template/public'
 };
 
