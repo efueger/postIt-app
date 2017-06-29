@@ -25,8 +25,6 @@ passport.use(new LocalStrategy((username, password, done) =>{
     if (user.password === hashedPassword) {
       return done(null, user);
     }
-
-    return done(null, false, { message: 'Incorrect credentials.' });
   });
 }));
 
