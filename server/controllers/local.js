@@ -1,5 +1,6 @@
 import passport from 'passport';
 import localStrategy from 'passport-local';
+import bcrypt from 'bcrypt';
 
 import passportInit from './passport';
 import user from '../models';
