@@ -70,12 +70,20 @@ export default class UserHelpers {
   */
   loginUser(req, res) {
     passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        res.status(500).json({ status: 'error' });
+      }
       if (!user) {
         res.status(404).json({ status: 'User not found' });
       };
 
       if (user) {
-        res.status(200).json({ status: 'success' });
+        req.logIn(user, (err) => {
+          if (err) {
+            res.status(500).json({ status: 'error' });
+          }
+           res.status(200).json({ status: 'success' });
+        });
       };
     });
   };
