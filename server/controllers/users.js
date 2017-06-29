@@ -12,7 +12,7 @@ export default class UserHelpers {
   getAllRegisteredMembers(req, res) {
     User.findAll({})
     .then((user) => res.status(200).json(user));
-  }
+  };
 
   /**
   * Get one registered user
@@ -38,17 +38,9 @@ export default class UserHelpers {
     const username = req.body.username;
     const email = req.body.email;
     const password2 = req.body.password2;
-
-    if (!username || !password || !password2 || !email) {
-      res.status(500).json({ status: 'Input all fields' });
-    }
-
-    if (password !== password2) {
-      res.status(500).json({ status: 'Input matching passwords' });
-    }
-
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
+
     console.log('Username value',User.create);
     User.sync({force: false}).then(() => {
       return User
@@ -58,8 +50,16 @@ export default class UserHelpers {
         password: hashedPassword,
         salt: salt
       })
-      .then(user => res.status(201).send(user))
-      .catch(error => res.status(400).send(error));
+      .then((user) => {
+        passport.authenticate('local')(req, res, () => {
+          req.session.save((err) => {
+            if (err) {
+              return next(err);
+            }
+            res.status(201).send(user);
+          });
+        });
+      });
     });    
   }
 
@@ -70,22 +70,13 @@ export default class UserHelpers {
   */
   loginUser(req, res) {
     passport.authenticate('local', (err, user, info) => {
-      if (err) { 
-        res.status(500).json({ status: 'error' });
-      }
-
       if (!user) {
         res.status(404).json({ status: 'User not found' });
-      }
+      };
 
       if (user) {
-        req.logIn(user, (err) => {
-          if (err) {
-            res.status(500).json({ status: 'error' });
-          }
-          res.status(200).json({ status: 'success' });
-        });
-      }
-    })(req, res);
-  }
-}
+        res.status(200).json({ status: 'success' });
+      };
+    });
+  };
+};
