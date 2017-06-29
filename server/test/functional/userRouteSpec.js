@@ -9,7 +9,7 @@ describe('User-Routes', () => {
   describe('Get user', () => {
     beforeEach(() => {
       return user.sync({ force: false }).then(() => {
-        user.bulkCreate(users);
+        user.Create(users);
       });
     });
 
@@ -45,7 +45,7 @@ describe('User-Routes', () => {
   describe('User registration', () => {
     beforeEach(() => {
       return user.sync({ force: false }).then(() => {
-        user.bulkCreate(users);
+        user.Create(users);
       });
     });
 
@@ -75,7 +75,7 @@ describe('User-Routes', () => {
   describe('User log in', () => {
     beforeEach(() => {
       return user.sync({ force: false }).then(() => {
-        user.bulkCreate(users);
+        user.Create(users);
       });
     });
 
@@ -92,17 +92,19 @@ describe('User-Routes', () => {
         })
         .expect(200)
         .expect('Content-Type', 'application/json; charset=utf-8')
-        .end((err, res) => {
+        .expect((res) => {
           expect(res.body.status).toEqual('success');
+        })
+        .end((err, res) => {
           done();
-        });
+        })
     });
   });
 
   describe('User not logged in', () => {
     beforeEach(() => {
       return user.sync({ force: false }).then(() => {
-        user.bulkCreate(users);
+        user.Create(users);
       });
     });
 
@@ -119,10 +121,12 @@ describe('User-Routes', () => {
         })
         .expect(200)
         .expect('Content-Type', 'application/json; charset=utf-8')
-        .end((err, res) => {
+        .expect((res) => {
           expect(res.body.status).toEqual('User not found');
+        })
+        .end((err, res) => {  
           done();
         });
     });
-  })
+  });
 });
