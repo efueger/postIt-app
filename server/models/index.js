@@ -20,17 +20,9 @@ const dbOptions = {
 console.log('database name', process.env.TEST_DATABASE);
 let db = {}
 
-// const sequelize = new Sequelize(process.env.TEST_DATABASE,
-//   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
-const sequelize = new Sequelize(process.env.DB_URL);
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+const sequelize = new Sequelize(process.env.TEST_DATABASE,
+  process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
+//const sequelize = new Sequelize(process.env.DB_URL);
 
 fs
   .readdirSync(__dirname)
