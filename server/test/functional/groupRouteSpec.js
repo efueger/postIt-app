@@ -48,7 +48,7 @@ describe('Group-Routes', () => {
         description: 'Discuss everything mount saint gabriel',
         grouptype: 'SchoolMemories'
       })
-      .expect(201)
+      .expect(200)
       .expect('Content-Type', 'application/json; charset=utf-8')
       .end((err, res) => {
         expect(res.body.groupname).toEqual('mount saint gabriel');
