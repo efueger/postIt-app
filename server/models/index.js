@@ -1,54 +1,31 @@
-
-import fs from 'fs';
-import path from 'path';
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
+import user from './user';
+import group from './group';
+import message from './messages';
+import userGroup from './usergroup';
 
-const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
-
+const path = '../.env';
 dotenv.load();
-dotenv.config({ path: '../.env' });
-const dbOptions = {
-  "username": process.env.DB_USERNAME,
-  "password": process.env.DB_PASS,
-  "database": process.env.TEST_DATABASE,
-  "host": process.env.DB_HOST,
-  "port": process.env.DB_PORT,
-  "dialect": process.env.DB_DIALECT
-}
-console.log('database name', process.env.TEST_DATABASE);
-let db = {}
+dotenv.config({ path });
 
-// const sequelize = new Sequelize(process.env.TEST_DATABASE,
-//   process.env.DB_USERNAME, process.env.DB_PASS, dbOptions);
-const sequelize = new Sequelize(process.env.DB_URL);
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+const sequelize = new Sequelize(process.env.TEST_URL);
+const UserGroup = userGroup(sequelize, Sequelize);
+const User = user(sequelize, Sequelize);
+const Group = group(sequelize, Sequelize);
+const Message = message(sequelize, Sequelize);
 
-fs
-  .readdirSync(__dirname)
-  .filter((file) => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach((file) => {
-    var model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
-console.log('The database models', db.User);
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+UserGroup.belongsTo(User);
+User.belongsToMany(Group, { through: UserGroup });
+UserGroup.belongsTo(Group);
+Group.belongsToMany(User, { through: UserGroup });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+Message.belongsTo(Group);
+
+const db = { Group: Group,
+  User,
+  Message,
+  UserGroup
+};
 
 export default db;

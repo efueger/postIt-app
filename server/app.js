@@ -37,9 +37,7 @@ app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the begining of nothingness.',
 }));
 
-const port = process.env.PORT || process.env.PORT_DEV;
-
-app.listen(port);
-console.log('Listen to app at port...', port);
+app.listen(process.env.PORT||3000);
+console.log('Listen to app at port...', 3000);
 
 export default app;

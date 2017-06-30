@@ -1,5 +1,6 @@
 import passport from 'passport';
 import localStrategy from 'passport-local';
+import bcrypt from 'bcrypt';
 
 import passportInit from './passport';
 import user from '../models';
@@ -24,8 +25,6 @@ passport.use(new LocalStrategy((username, password, done) =>{
     if (user.password === hashedPassword) {
       return done(null, user);
     }
-
-    return done(null, false, { message: 'Incorrect credentials.' });
   });
 }));
 
