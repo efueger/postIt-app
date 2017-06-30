@@ -4,7 +4,7 @@
   "description": "An application to enable users post messages to groups",
   "main": "server.js",
   "scripts": {
-    "start": "gulp serve",
+    "start": "babel-node ./server/app.js",
     "test": "gulp test"
   },
   "repository": {
