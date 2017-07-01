@@ -16,7 +16,7 @@ passport.use(new LocalStrategy((username, password, done) =>{
       'username': username
     }
   }).then((user) => {
-    if (user == null) {
+    if (!user) {
       return done(null, false, { message: 'Incorrect credentials.' })
     }
 
