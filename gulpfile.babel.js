@@ -52,7 +52,7 @@ gulp.task('test', () => {
     .pipe(jasmineNode())
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 70 } }))
-    .on('finish', () => {
+    .on('end', () => {
       gulp.src('./coverage/lcov.info')
       .pipe(coveralls())
     })   
