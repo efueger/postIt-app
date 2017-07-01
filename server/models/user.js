@@ -23,15 +23,6 @@ const users = (sequelize, DataTypes) => {
       allowNull: false
     },
     salt: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: (models) => {
-        User.hasMany(models.Message, {
-          foreignKey: 'userId',
-          as: 'messages',
-        });
-      }
-    }
   });
   return User;
 };
