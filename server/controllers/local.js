@@ -10,7 +10,7 @@ const LocalStrategy = localStrategy.Strategy;
 
 passportInit();
 
-passport.use(new LocalStrategy((username, password, done) =>{
+passport.use(new LocalStrategy((username, password, done) => {
   user.User.findOne({
     where: {
       'username': username
