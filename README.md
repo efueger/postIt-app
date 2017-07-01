@@ -1,2 +1,2 @@
 [![Build Status](https://travis-ci.org/rkterungwa16/postIt-app.svg?branch=feature/server-api)](https://travis-ci.org/rkterungwa16/postIt-app)
-[![Coverage Status](https://coveralls.io/repos/github/rkterungwa16/postIt-app/badge.svg?branch=master)](https://coveralls.io/github/rkterungwa16/postIt-app?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/rkterungwa16/postIt-app/badge.svg?branch=feature/server-api)](https://coveralls.io/github/rkterungwa16/postIt-app?branch=feature/server-api)
