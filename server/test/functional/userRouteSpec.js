@@ -7,15 +7,15 @@ const user = models.User;
 
 describe('User-Routes', () => {
   beforeEach(() => {
-    user.destroy({ truncate: true, cascade: true });
+    //user.destroy({ truncate: true, cascade: true });
     user.sync({ force: false }).then(() => {
       user.create(users[0]);
-      });
+    });
   });
 
-  afterEach(() => {
-    user.destroy({ truncate: true, cascade: true });
-  });
+  // afterEach(() => {
+    
+  // });
 
   it('should return correct object type for users', (done) => {
     req(app)
@@ -60,32 +60,32 @@ describe('User-Routes', () => {
       });
   });
   
-  it('should sign in a created user', (done) => {
-    req(app)
-      .post('/api/user/login')
-      .send({
-        username: 'myuser',
-        password: 'johns_password'
-      })
-      .end((err, res) => {
-        expect(res.status).toEqual(200);
-        expect(res.type).toEqual('application/json')
-        expect(res.body.status).toEqual('success');
-        done();
-      });
-  });
-
   it('should not sign in an unregistered user', (done) => {
     req(app)
       .post('/api/user/login')
       .send({
-        username: 'johndoe',
-        password: 'johns_password'
+        username: 'python',
+        password: 'python1234'
       })
       .end((err, res) => {
         expect(res.status).toEqual(404);
         expect(res.type).toEqual('application/json')
         expect(res.body.status).toEqual('User not found');
+        done();
+      });
+  });
+
+  it('should sign in a created user', (done) => {
+    req(app)
+      .post('/api/user/login')
+      .send({
+        username: 'john',
+        password: 'johns'
+      })
+      .end((err, res) => {
+        expect(res.status).toEqual(200);
+        expect(res.type).toEqual('application/json')
+        expect(res.body.status).toEqual('success');
         done();
       });
   });
