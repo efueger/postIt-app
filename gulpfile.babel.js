@@ -7,6 +7,7 @@ import jasmineNode from 'gulp-jasmine-node';
 import exit from 'gulp-exit';
 import istanbul from 'gulp-babel-istanbul';
 import injectModules from 'gulp-inject-modules';
+import coveralls from 'gulp-coveralls';
 
 // Configure environment variables
 dotenv.config({ path: './.env' });
@@ -40,7 +41,7 @@ gulp.task('serve', () =>
 );
 
 // Test coverage
-gulp.task('test', () => {
+gulp.task('tests', () => {
   gulp.src(['./server/models/*js', './server/controllers/*js', './server/routes/*js', './server/models/*js'])
   .pipe(istanbul())
   .pipe(istanbul.hookRequire())
@@ -55,4 +56,15 @@ gulp.task('test', () => {
   });
 });
 
+// Load code coverage to coveralls
+gulp.task('coveralls', () => {
+  // If not running on CI environment it won't send lcov.info to coveralls
+  if (!process.env.CI) {
+    return;
+  }
+  return gulp.src('./coverage/lcov.info')
+    .pipe(coveralls())
+});
+
+gulp.task('test', ['tests', 'coveralls']);
 gulp.task('default', ['css', 'fonts']);
