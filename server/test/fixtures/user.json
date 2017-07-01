@@ -1,8 +1,11 @@
 [
   {
-    "username": "johndoe",
-    "password": "johns_password",
-    "password2": "johns_password",
-    "email": "johndoe@example.com"
+    "id": 1,
+    "username": "john",
+    "email": "john_@email.com",
+    "password": "$2a$10$alG/MtLbgi6HvBJqsBen9.TwMYBT/IhvEH/g.XPbNEgOnGHhAG5RW",
+    "salt": "$2a$10$alG/MtLbgi6HvBJqsBen9.",
+    "createdAt": "2017-07-01T01:35:02.321Z",
+    "updatedAt": "2017-07-01T01:35:02.321Z"
   }
 ]
