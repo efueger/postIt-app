@@ -1,6 +1,6 @@
 import model from '../models';
 const Group = model.Group;
-
+const User = model.User;
 const UserGroup = model.UserGroups;
 
 export default class GroupHelpers {
@@ -11,7 +11,7 @@ export default class GroupHelpers {
   */
   getAllGroups(req, res) {
     Group.findAll({})
-    .then((user) => res.status(200).json(user));
+    .then((group) => res.status(200).json(group));
   }
 
   /**
@@ -47,15 +47,31 @@ export default class GroupHelpers {
         grouptype: grouptype
       })
       .then((group) => {
-        // UserGroup.sync({ force: false }).then(() => {
-        //   return UserGroup
-        //   .create({
-        //     userId: userId, 
-        //     groupId: group.id
-        //   });
-        // });
         res.status(200).send(group);
       });
     });   
   }
+
+  // addUserToGroup(req, res) {
+  //   // Locate the current group using id (params)/api/group/<group id>/user
+  //   // Add current user in session to group with 
+  //   const groupid = req.params.groupid;
+  //   const userid = req.params.userid;
+  //   Group.findOne({
+  //     where: {
+  //       id: groupid
+  //     }
+  //   }).then((group) => {
+  //     User.findOne({
+  //       where: {
+  //         id: userid
+  //       }
+  //     }).then((user) => {
+        
+  //     })
+  //     res.status(200).json(group);
+  //   });
+  //   const groupId = req.params.groupid;
+  //   Group.addUser(User, { through: { status: 'started' }});
+  // }
 }
