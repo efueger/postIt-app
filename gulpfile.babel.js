@@ -41,7 +41,7 @@ gulp.task('serve', () =>
 );
 
 // Test coverage
-gulp.task('tests', () => {
+gulp.task('test', () => {
   gulp.src(['./server/models/*js', './server/controllers/*js', './server/routes/*js', './server/models/*js'])
   .pipe(istanbul())
   .pipe(istanbul.hookRequire())
@@ -52,19 +52,12 @@ gulp.task('tests', () => {
     .pipe(jasmineNode())
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 70 } }))
+    .on('finish', () => {
+      gulp.src('./coverage/lcov.info')
+      .pipe(coveralls())
+    })   
     .pipe(exit());
   });
 });
 
-// Load code coverage to coveralls
-gulp.task('coveralls', () => {
-  // If not running on CI environment it won't send lcov.info to coveralls
-  if (!process.env.CI) {
-    return;
-  }
-  return gulp.src('./coverage/lcov.info')
-    .pipe(coveralls())
-});
-
-gulp.task('test', ['tests', 'coveralls']);
 gulp.task('default', ['css', 'fonts']);
