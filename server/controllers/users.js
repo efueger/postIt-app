@@ -11,7 +11,8 @@ export default class UserHelpers {
   */
   getAllRegisteredMembers(req, res) {
     User.findAll({})
-    .then((user) => res.status(200).json(user));
+    .then((user) => res.status(200).json(user))
+    .catch((user) => res.status(400).json('error'));
   };
 
   /**
@@ -33,7 +34,7 @@ export default class UserHelpers {
   * @param {object} req for first parameter
   * @param {object} res for second parameter
   */
-  createUser(req, res) {
+  createUser(req, res, next) {
     const password = req.body.password;
     const username = req.body.username;
     const email = req.body.email;
@@ -50,16 +51,7 @@ export default class UserHelpers {
         password: hashedPassword,
         salt: salt
       })
-      .then((user) => {
-        passport.authenticate('local')(req, res, () => {
-          req.session.save((err) => {
-            if (err) {
-              return next(err);
-            }
-            res.status(201).send(user);
-          });
-        });
-      });
+      .then((user) => { res.status(201).send(user); });
     });    
   }
 
@@ -69,22 +61,15 @@ export default class UserHelpers {
   * @param {object} res for second parameter
   */
   loginUser(req, res) {
-    passport.authenticate('local', (err, user, info) => {
-      if (err) {
-        res.status(500).json({ status: 'error' });
-      }
+    passport.authenticate('local', (err, user) => {
       if (!user) {
         res.status(404).json({ status: 'User not found' });
       };
-
       if (user) {
         req.logIn(user, (err) => {
-          if (err) {
-            res.status(500).json({ status: 'error' });
-          }
            res.status(200).json({ status: 'success' });
         });
       };
-    });
+    })(req, res);
   };
 };
