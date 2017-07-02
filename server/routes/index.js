@@ -15,5 +15,6 @@ const router = (app) => {
   app.post('/api/user/login', usersControllers.loginUser);
   app.post('/api/group', groupControllers.createGroup);
   app.post('/api/group/:groupid/message/', messageControllers.sendMessage);
+  app.post('/api/group/:groupid/user', groupControllers.addUserToGroup);
 };
 export default router;
