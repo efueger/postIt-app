@@ -1,6 +1,6 @@
 import req from 'supertest';
 import app from '../../app';
-import groups from '../fixtures/user.json';
+import groups from '../fixtures/groups.json';
 import models from '../../models/';
 
 const group = models.Group;
