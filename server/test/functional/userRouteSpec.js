@@ -7,15 +7,10 @@ const user = models.User;
 
 describe('User-Routes', () => {
   beforeEach(() => {
-    //user.destroy({ truncate: true, cascade: true });
     user.sync({ force: false }).then(() => {
       user.create(users[0]);
     });
   });
-
-  // afterEach(() => {
-    
-  // });
 
   it('should return correct object type for users', (done) => {
     req(app)
