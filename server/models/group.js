@@ -1,15 +1,19 @@
 const groups = (sequelize, DataTypes) => {
   const Group = sequelize.define('Group', {
-    groupname: {
+    groupName: {
       type:DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    grouptype: {
+    groupType: {
       type: DataTypes.STRING,
       allowNull: false
     },
     description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    createdBy: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -27,4 +31,4 @@ const groups = (sequelize, DataTypes) => {
   return Group;
 };
 
-module.exports = groups;
+export default groups;

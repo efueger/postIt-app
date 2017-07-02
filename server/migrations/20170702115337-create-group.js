@@ -7,15 +7,18 @@ export default {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      groupname: {
+      groupName: {
         type: Sequelize.STRING
       },
-      grouptype: {
+      groupType: {
         type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING
       },
+      createdBy:{
+        type: Sequelize.STRING
+      }
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
