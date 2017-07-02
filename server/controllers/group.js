@@ -76,12 +76,28 @@ export default class GroupHelpers {
         .then(() => {
           UserGroup
           .create({
-            UserId: user.id,
-            GroupId: group.id
+            userId: user.id,
+            groupId: group.id
           });
           res.status(200).json(user);
         });     
       });
     });
+  }
+
+  /**
+  * Add user to created group
+  * @param {object} req for first parameter
+  * @param {object} res for second parameter
+  */
+  getAllUsersInAGroup(req, res) {
+    const groupid= req.params.groupid;
+    UserGroup.findAll({
+      where: {
+        groupId: groupid
+      }
+    }).then((userGroup) => {
+      res.status(200).json(userGroup);
+    })
   }
 }
