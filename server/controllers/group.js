@@ -34,17 +34,18 @@ export default class GroupHelpers {
   * @param {object} res for second parameter
   */
   createGroup(req, res) {
-    const groupname = req.body.groupname;
+    const groupName = req.body.groupName;
     const description = req.body.description;
-    const grouptype = req.body.grouptype;
-    const userId = 2;
+    const groupType = req.body.groupType;
+    const creator = req.body.username;
 
     Group.sync({force: false}).then(() => {
       return Group
       .create({
-        groupname: groupname,
+        groupName: groupName,
         description: description,
-        grouptype: grouptype
+        groupType: groupType,
+        createdBy: creator
       })
       .then((group) => {
         res.status(200).send(group);
