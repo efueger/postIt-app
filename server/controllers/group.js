@@ -1,7 +1,7 @@
 import model from '../models';
 const Group = model.Group;
 const User = model.User;
-const UserGroup = model.UserGroups;
+const UserGroup = model.UserGroup;
 
 export default class GroupHelpers {
   /**
@@ -51,27 +51,36 @@ export default class GroupHelpers {
       });
     });   
   }
+  
+  /**
+  * Add user to created group
+  * @param {object} req for first parameter
+  * @param {object} res for second parameter
+  */
+  addUserToGroup(req, res) {
+    const groupid = req.params.groupid;
+    const user = req.body.username;
 
-  // addUserToGroup(req, res) {
-  //   // Locate the current group using id (params)/api/group/<group id>/user
-  //   // Add current user in session to group with 
-  //   const groupid = req.params.groupid;
-  //   const userid = req.params.userid;
-  //   Group.findOne({
-  //     where: {
-  //       id: groupid
-  //     }
-  //   }).then((group) => {
-  //     User.findOne({
-  //       where: {
-  //         id: userid
-  //       }
-  //     }).then((user) => {
-        
-  //     })
-  //     res.status(200).json(group);
-  //   });
-  //   const groupId = req.params.groupid;
-  //   Group.addUser(User, { through: { status: 'started' }});
-  // }
+    Group.findOne({
+      where: {
+        id: groupid
+      }
+    }).then((group) => {
+      User.findOne({
+        where: {
+          username: user
+        }
+      }).then((user) => {
+        UserGroup.sync({force: false})
+        .then(() => {
+          UserGroup
+          .create({
+            UserId: user.id,
+            GroupId: group.id
+          });
+          res.status(200).json(user);
+        });     
+      });
+    });
+  }
 }
