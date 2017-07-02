@@ -14,7 +14,17 @@ const groups = (sequelize, DataTypes) => {
       allowNull: false
     }
   });
+
+  Group.associate = (models) => {
+    Group.belongsToMany(models.User, {
+      through: 'UserGroup'
+    });
+
+    Group.hasMany(models.Message, {
+      foreignKey: 'groupId'
+    });
+  };
   return Group;
 };
 
-export default groups;
+module.exports = groups;

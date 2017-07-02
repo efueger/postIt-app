@@ -7,6 +7,13 @@ const messages = (sequelize, DataTypes) => {
     groupId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
   });
+
+  Message.associate = (models) => {
+    Message.belongsTo(models.Group, {
+      onDelete: 'CASCADE',
+      foreignKey: 'groupId'
+    });
+  };
   return Message;
 };
 

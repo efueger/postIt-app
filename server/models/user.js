@@ -24,6 +24,12 @@ const users = (sequelize, DataTypes) => {
     },
     salt: DataTypes.STRING
   });
+
+  User.associate = (models) => {
+    User.belongsToMany(models.Group, {
+      through: 'UserGroup'
+    });
+  };
   return User;
 };
 
