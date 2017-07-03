@@ -1,0 +1,53 @@
+<!Doctype html>
+<html>
+<head>
+  <title>PostIt App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/materialize.css">
+</head>
+<body>
+  
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper" id="nav-bar">
+      <a id="logo-container" href="#" class="brand-logo">PostIt</a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <br><br>
+
+  <div class="section no-pad-bot col s6 " id="index-banner">
+    <div class="row center col s12 m6 l3">
+      <div class="card col s4 offset-s4 grey lighten-4">
+        <form  method="post" action="#">
+          <div class="input-field">
+            <i class="material-icons prefix">person_outline</i>
+            <input class="validate" id="login-username" placeholder="Your username" type="text"/>
+          </div>
+
+          <div class="input-field">
+            <i class="material-icons prefix">lock_outline</i>
+            <input class="validate" id="login-password" placeholder="Your password" type="password"/>
+          </div>
+        
+          <div class="form-group text-center">
+            <a class="waves-effect waves-light btn-large" id="signup-btn">Register</a>
+          </div>
+
+          <div class="form-group text-center">
+            <span>Are you new to this site?<a href='#'>Register</a></span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

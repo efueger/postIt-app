@@ -14,21 +14,21 @@ dotenv.config({ path: './.env' });
 const NODE_ENV = process.env.NODE_ENV;
 
 const config = {
-  bootstrapDir: './bower_components/bootstrap-sass',
+  bootstrapDir: './bower_components/materialize',
   publicDir: './template/public'
 };
 
 gulp.task('css', () => {
-  return gulp.src('./template/css/app.scss')
+  return gulp.src(config.bootstrapDir + '/sass/materialize.scss')
   .pipe(sass({
-    includePaths: [`${config.bootstrapDir}/assets/stylesheets`],
+    includePaths: [config.bootstrapDir + '/sass/_style.scss'],
   }))
   .pipe(gulp.dest(`${config.publicDir}/css`));
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(`${config.bootstrapDir}/assets/fonts/`)
-  .pipe(gulp.dest(`${config.publicDir}/fonts`));
+  return gulp.src(config.bootstrapDir + '/fonts/**/*')
+  .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
 // Run app server
@@ -60,4 +60,9 @@ gulp.task('test', () => {
   });
 });
 
-gulp.task('default', ['css', 'fonts']);
+gulp.task('js', () => {
+  return gulp.src(config.bootstrapDir + '/js/**/*')
+  .pipe(gulp.dest(config.publicDir + '/js'));
+})
+
+gulp.task('default', ['css', 'fonts', 'js']);
