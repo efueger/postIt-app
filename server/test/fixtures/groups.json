@@ -1,32 +1,11 @@
 [
-    {
-        "groupname": "codeone",
-        "grouptype": "love",
-        "description": "Talk about love"
-    },
-    {
-        "groupname": "lucil",
-        "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn."
-    },
-    {
-        "groupname": "lucil",
-        "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn."
-    },
-    {
-        "groupname": "lucil",
-        "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn."
-    },
-    {
-        "groupname": "lucil",
-        "grouptype": "Ideas mehn",
-        "description": "Be as lucid as possible mehn."
-    },
-    {
-        "groupname": "Ether",
-        "grouptype": "relativity",
-        "description": "The previous understanding of the universe"   
-    }
+  {
+    "id": 1,
+    "groupName": "Architecture",
+    "groupType": "Interior designs",
+    "description": "Latest decor",
+    "createdBy": "john",
+    "createdAt": "2017-07-02T12:27:17.069Z",
+    "updatedAt": "2017-07-02T12:27:17.069Z"
+  }
 ]

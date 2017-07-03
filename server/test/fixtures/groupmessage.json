@@ -1,12 +1,10 @@
 [
   {
-      "content": "I entered the realm of invisibility",
-      "groupId": 4,
-      "userId": 2
-  },
-  {
-      "content": "I entered the realm of invisibility",
-      "groupId": 4,
-      "userId": 3
+    "id": 1,
+    "content": "Welcome to the group",
+    "groupId": 1,
+    "userId": 1,
+    "createdAt": "2017-07-03T02:08:19.817Z",
+    "updatedAt": "2017-07-03T02:08:19.817Z"
   }
 ]
