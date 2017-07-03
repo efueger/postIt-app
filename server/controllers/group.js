@@ -26,7 +26,7 @@ export default class GroupHelpers {
         id: groupid
       }
     }).then((user) => res.status(200).json(user));
-  }
+  };
 
   /**
   * Create new group
@@ -39,19 +39,25 @@ export default class GroupHelpers {
     const groupType = req.body.groupType;
     const creator = req.body.username;
 
-    Group.sync({force: false}).then(() => {
-      return Group
-      .create({
-        groupName: groupName,
-        description: description,
-        groupType: groupType,
-        createdBy: creator
-      })
-      .then((group) => {
-        res.status(200).send(group);
-      });
-    });   
-  }
+    User.findOne({
+      where: {
+        username: creator
+      }
+    }).then((user) => {
+      Group.sync({force: false}).then(() => {
+        return Group
+        .create({
+          groupName: groupName,
+          description: description,
+          groupType: groupType,
+          createdBy: creator
+        })
+        .then((group) => {
+          res.status(200).json(group);
+        });
+      });   
+    });    
+  };
   
   /**
   * Add user to created group
@@ -79,11 +85,11 @@ export default class GroupHelpers {
             userId: user.id,
             groupId: group.id
           });
-          res.status(200).json(user);
+          res.status(200).json({ status: 'User successfully added' });
         });     
       });
     });
-  }
+  };
 
   /**
   * Add user to created group
@@ -98,6 +104,6 @@ export default class GroupHelpers {
       }
     }).then((userGroup) => {
       res.status(200).json(userGroup);
-    })
-  }
-}
+    });
+  };
+};
