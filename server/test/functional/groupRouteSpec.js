@@ -74,4 +74,13 @@ describe('Group-Routes', () => {
       expect(res.body.status).toEqual('User successfully added');
     });
   });
+
+  it('should get all users in a group', (done) => {
+    req(app)
+    .get('/api/group/2/user')
+    .end((err, res) => {
+      expect(res.status).toEqual(200);
+      expect(res.type).toEqual('application/json');
+    });
+  });
 });
