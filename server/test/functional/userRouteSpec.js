@@ -74,7 +74,7 @@ describe('User-Routes', () => {
     req(app)
       .post('/api/user/login')
       .send({
-        username: 'john',
+        username: 'johnson',
         password: 'johns'
       })
       .end((err, res) => {
