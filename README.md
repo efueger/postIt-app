@@ -5,7 +5,8 @@
 
 
 ## Introduction
-*  **`postIt-app`** is an Express Js Powered web app built. 
+*  **`postIt-app`** is an Express Js Powered web app built to enable users post messages and create groups.
+* You can find the link to the application here **[kombol-api-postit](https://kombol-api-postit.herokuapp.com/)**.
 
 *  It has the following features;
   *  Allows users to;
