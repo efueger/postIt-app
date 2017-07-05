@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/rkterungwa16/postIt-app.svg?branch=feature/server-api)](https://travis-ci.org/rkterungwa16/postIt-app)
 [![Coverage Status](https://coveralls.io/repos/github/rkterungwa16/postIt-app/badge.svg?branch=master)](https://coveralls.io/github/rkterungwa16/postIt-app?branch=master)
+[![Test Coverage](https://codeclimate.com/github/rkterungwa16/postIt-app/badges/coverage.svg)](https://codeclimate.com/github/rkterungwa16/postIt-app/coverage)
 
 # PostIt-app
 
